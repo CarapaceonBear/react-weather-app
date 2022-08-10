@@ -4,20 +4,27 @@ import Splash from "./containers/Splash/Splash";
 
 function App() {
 
-  const [userLocation, setUserLocation] = useState("default location");
+  // later use a different api for nearest city
+  const [userLocation, setUserLocation] = useState("Unable to get location");
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
   useEffect(() => {
-    getLocation().then(location => setUserLocation(location))
+    if ("geolocation" in navigator) {
+      getLocation()
+    }
   }, [])
 
-  const getLocation = async () => {
-    console.log("get the location");
-    return "this place"
+  const getLocation = () => {
+    return navigator.geolocation.getCurrentPosition(function(position) {
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
+    })
   }
 
   return (
     <div className="App">
-      <Splash location={userLocation} />
+      <Splash location={userLocation} latitude={latitude} longitude={longitude} />
     </div>
   );
 }
