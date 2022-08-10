@@ -8,11 +8,14 @@ function App() {
   const [userLocation, setUserLocation] = useState("Unable to get location");
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [time, setTime] = useState(null);
+  const [displayTime, setDisplayTime] = useState(null);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
       getLocation()
     }
+    getTime()
   }, [])
 
   const getLocation = () => {
@@ -22,9 +25,18 @@ function App() {
     })
   }
 
+  const getTime = () => {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    minutes < 30 ? setTime(hours) : setTime(hours + 1)
+    minutes < 10 ? setDisplayTime(`${hours}:0${minutes}`) : setDisplayTime(`${hours}:${minutes}`)
+  }
+
   return (
     <div className="App">
-      <Splash location={userLocation} latitude={latitude} longitude={longitude} />
+      <h1>{displayTime}</h1>
+      <Splash location={userLocation} latitude={latitude} longitude={longitude} time={time} />
     </div>
   );
 }
