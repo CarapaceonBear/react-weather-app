@@ -5,7 +5,7 @@ import WeatherDisplay from "../../components/WeatherDisplay/WeatherDisplay";
 const WeatherBox = ({ weatherData }) => {
 
   return (
-    <div>
+    <div className="weather-box">
         {weatherData ? 
           <>
             <WeatherDisplay temperature={weatherData.zero_temperature} weatherCode={weatherData.zero_weather} />

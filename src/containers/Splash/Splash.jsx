@@ -47,11 +47,11 @@ const Splash = ({ time }) => {
   }
 
   return (
-    <div>
-      <h1>{latitude}, {longitude}</h1>
+    <div className="splash">
+      <h1 className="splash__coordinates" >{latitude}, {longitude}</h1>
       {latitude && longitude ?
         <WeatherBox weatherData={weatherData} />
-        : <p>Loading data</p>
+        : <p className="splash__text">Loading data</p>
       }
     </div>
   )

@@ -4,9 +4,9 @@ import "./WeatherDisplay.scss";
 const WeatherDisplay = ({ temperature, weatherCode }) => {
 
   return (
-    <div>
-      <h2>{weatherCode}</h2>
-      <h2>{temperature}</h2>
+    <div className="weather-display">
+      <h2 className="weather-display__weather">{weatherCode}</h2>
+      <h2 className="weather-display__temperature">{temperature}</h2>
     </div>
   )
 }

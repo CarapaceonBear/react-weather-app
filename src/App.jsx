@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import "./App.scss";
 import Splash from "./containers/Splash/Splash";
 
@@ -6,6 +6,7 @@ function App() {
 
   let time = null;
   let displayTime = null;
+  let message = "";
 
   const getTime = () => {
     const now = new Date();
@@ -15,11 +16,24 @@ function App() {
     minutes < 10 ? displayTime = `${hours}:0${minutes}` : displayTime = `${hours}:${minutes}`
   }
 
+  const getMessage = () => {
+    switch (time) {
+      case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11:
+        return "Good morning!"
+      case 12: case 13: case 14: case 15: case 16: case 17:
+        return "Good afternoon!"
+      default:
+        return "Good evening!"
+    }
+  }
+
   getTime()
+  message = getMessage()
 
   return (
     <div className="App">
-      <h1>{displayTime}</h1>
+      <h1 className="App__message">{message}</h1>
+      <h2 className="App__clock">{displayTime}</h2>
       <Splash time={time} />
     </div>
   );
