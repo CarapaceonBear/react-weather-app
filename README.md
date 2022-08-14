@@ -4,3 +4,6 @@
 
 Weather
 https://open-meteo.com/en
+
+Location
+https://positionstack.com/

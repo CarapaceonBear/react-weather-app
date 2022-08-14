@@ -4,6 +4,8 @@ import WeatherBox from "../WeatherBox/WeatherBox";
 
 const Splash = ({ time }) => {
 
+  const apiKey = "870092f2d4b6100ac8cd3d6005e738f3";
+
   // later use a different api for nearest city
   const [userLocation, setUserLocation] = useState("Unable to get location");
   const [latitude, setLatitude] = useState(0);
@@ -13,12 +15,13 @@ const Splash = ({ time }) => {
   
   useEffect(() => {
     if ("geolocation" in navigator) {
-      getLocation()
+      getCoordinates()
       getWeatherData().then((result) => setWeatherData(result))
+      getLocation().then((result) => setUserLocation(result))
     }
-  }, [latitude])
+  }, [longitude])
 
-  const getLocation = () => {
+  const getCoordinates = () => {
     return navigator.geolocation.getCurrentPosition(function(position) {
       setLatitude(position.coords.latitude);
       setLongitude(position.coords.longitude);
@@ -46,9 +49,17 @@ const Splash = ({ time }) => {
     }
   }
 
+  const getLocation = async () => {
+    const url = `http://api.positionstack.com/v1/reverse?access_key=${apiKey}&query=${latitude},${longitude}`
+    let request = await fetch(url);
+    let result = await request.json()
+    return `${result.data[0].locality}, ${result.data[0].country}`
+  } 
+
   return (
     <div className="splash">
-      <h1 className="splash__coordinates" >{latitude}, {longitude}</h1>
+      <h2 className="splash__location">{userLocation}</h2>
+      <h3 className="splash__coordinates" >{latitude}, {longitude}</h3>
       {latitude && longitude ?
         <WeatherBox weatherData={weatherData} time={time} />
         : <p className="splash__text">Loading data</p>
