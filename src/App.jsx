@@ -35,7 +35,6 @@ function App() {
   }
 
   getTime()
-  // time = 24
   message = getMessage()
 
   return (
