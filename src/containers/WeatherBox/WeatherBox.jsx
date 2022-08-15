@@ -4,8 +4,15 @@ import WeatherDisplay from "../../components/WeatherDisplay/WeatherDisplay";
 
 const WeatherBox = ({ weatherData, time }) => {
 
+  let overlayClass = "weather-box__overlay--day"
+
+  if (time < 3 || time > 21) {
+    overlayClass = "weather-box__overlay--night"
+  }
+
   return (
-    <div className="weather-box">
+    <div className={"weather-box " + overlayClass}>
+      <div className="weather-box__container">
         {weatherData ? 
           <>
             <WeatherDisplay temperature={weatherData.zero_temperature} weatherCode={weatherData.zero_weather} time={time} />
@@ -16,6 +23,7 @@ const WeatherBox = ({ weatherData, time }) => {
           </>
             : <p>Data loading</p>
         }
+      </div>
     </div>
   )
 }

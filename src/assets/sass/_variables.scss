@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;600&display=swap');
+
+$primary-font: 'Quicksand', sans-serif;
+$font-light: 300;
+$font-bold: 600; 
+
+$background-morning: linear-gradient(0deg, rgba(62,150,241,1) 0%, rgba(151,232,255,1) 100%);
+$background-daytime: linear-gradient(0deg, rgba(255,128,0,1) 0%, rgba(255,207,83,1) 100%);
+$background-evening: linear-gradient(0deg, rgba(255,96,38,1) 0%, rgba(161,90,148,1) 100%);
+$background-night: linear-gradient(0deg, rgba(1,8,69,1) 0%, rgb(34, 43, 113) 100%);
+
+$color-white: white;
+$color-black: black;
+$color-overlay: rgba(255, 255, 255, 0.646);
+$day-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.502) 0%, rgba(255, 255, 255, 0.302) 100%);
+$night-overlay: linear-gradient(180deg, rgba(255, 255, 255, 0.283) 0%, rgba(255, 255, 255, 0.145) 100%);
