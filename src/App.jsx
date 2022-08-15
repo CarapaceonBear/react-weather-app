@@ -40,6 +40,7 @@ function App() {
 
   return (
     <div className={"App " + backgroundClass}>
+      <i class="fa-solid fa-hand fa-2xl"></i>
       <h1 className="App__message">{message}</h1>
       <h2 className="App__clock">{displayTime}</h2>
       <Splash time={time} />

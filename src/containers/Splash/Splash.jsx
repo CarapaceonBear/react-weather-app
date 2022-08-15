@@ -72,7 +72,10 @@ const Splash = ({ time }) => {
   return (
     <div className="splash">
       {userLocation ?
-        <h2 className="splash__location">{userLocation}</h2>
+        <>
+          <i class="fa-solid fa-location-dot fa-2xl"></i>
+          <h2 className="splash__location">{userLocation}</h2>
+        </>
         : null
       }
       <h3 className="splash__coordinates" >{latitude}, {longitude}</h3>
